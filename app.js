@@ -12,14 +12,16 @@ const getBeer = () => {
   const beerData = $.ajax({
     url: queryURL
   }).then((beerData) => {
-    console.log(beerData.data);
+    // console.log(beerData.data);
     for (let i=0; i<beerData.data.length; i++) {
-      console.log(beerData.data[i].name);
-      $('<div>').html(`
+      // console.log(beerData.data[i].name);
+      $('<div>').addClass('result').html(`
       <h3>${beerData.data[i].name}</h3>`).appendTo('#searchResults');
     }
   })
 };
+
+
 
 
 // // // this is trying to use CORS, but it kept throwing same error
@@ -44,6 +46,13 @@ const getBeer = () => {
 
 
 $(()=>{
+
+  const $btn = $('#search-btn');
+
+  $btn.on('click', (event) => {
+    console.log('search button clicked');
+    event.preventDefault();
+  });
 
   getBeer();
 
