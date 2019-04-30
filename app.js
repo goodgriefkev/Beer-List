@@ -5,10 +5,14 @@ const queryType = 'search?q='
 let query = 'lager';
 const apiKey = '&key=4ece60622e673c96654a9c304ae0b66d&format=json';
 
-let queryURL = baseURL + queryType + query + apiKey;
+
 // console.log(queryURL);
 
-const getBeer = () => {
+const getBeer = (userInput) => {
+  let query = userInput
+  // console.log(query);
+  let queryURL = baseURL + queryType + query + apiKey;
+  // console.log(queryURL);
   const beerData = $.ajax({
     url: queryURL
   }).then((beerData) => {
@@ -52,11 +56,12 @@ $(()=>{
   // $btn.on('click', (event) => {
     // console.log('search button clicked');
   $('form').on('submit', (event) => {
-    console.log($('#search-box').val());
+    // console.log($('#search-box').val());
+    getBeer($('#search-box').val());
     event.preventDefault();
     $(event.currentTarget).trigger('reset');
   });
 
-  getBeer();
+
 
 });
