@@ -1,4 +1,7 @@
 console.log('find some beer');
+
+
+
 // https://cors-anywhere.herokuapp.com/
 const baseURL = 'https://cors-anywhere.herokuapp.com/https://sandbox-api.brewerydb.com/v2/';
 const queryType = 'search?q='
@@ -35,9 +38,7 @@ const getBeer = (userInput) => {
         )
 };
 
-const addToList = () => {
-  $('')
-}
+
 
 
 
@@ -62,12 +63,13 @@ const addToList = () => {
 
 
 
+//open of on ready
 $(()=>{
 
   const $btn = $('#search-btn');
-
-  // $btn.on('click', (event) => {
+    // $btn.on('click', (event) => {
     // console.log('search button clicked');
+
   $('form').on('submit', (event) => {
     $('.result').remove();
     // console.log($('#search-box').val());
@@ -75,4 +77,12 @@ $(()=>{
     event.preventDefault();
     $(event.currentTarget).trigger('reset');
   });
+
+  $('#searchResults').on('click', (event) => {
+    console.log(event.target);
+    console.log(event.currentTarget);
+    $('<div>').addClass('savedResult').append($(event.target).remove()).appendTo('#list');
+  })
+
+//close of on ready
 });
