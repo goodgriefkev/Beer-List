@@ -54,6 +54,7 @@ $(()=>{
   $('form').on('submit', (event) => {
     console.log($('#search-box').val());
     event.preventDefault();
+    $(event.currentTarget).trigger('reset');
   });
 
   getBeer();
