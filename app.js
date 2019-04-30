@@ -6,7 +6,6 @@ let query = 'lager';
 const apiKey = '&key=4ece60622e673c96654a9c304ae0b66d&format=json';
 
 
-// console.log(queryURL);
 
 const getBeer = (userInput) => {
   let query = userInput
@@ -15,16 +14,28 @@ const getBeer = (userInput) => {
   // console.log(queryURL);
   const beerData = $.ajax({
     url: queryURL
-  }).then((beerData) => {
-    // console.log(beerData.data);
-    for (let i=0; i<beerData.data.length; i++) {
-      // console.log(beerData.data[i].name);
-      $('<div>').addClass('result').html(`
-      <h3>${beerData.data[i].name}</h3>`).appendTo('#searchResults');
-    }
-  })
+  }).then(
+      (beerData) => {
+        console.log(beerData.data);
+          if (beerData.data == undefined) {
+            $('<div>')
+              .addClass('result')
+              .html(`<h3>No results found</h3>`)
+              .appendTo('#searchResults');
+          } else {
+            for (let i=0; i<beerData.data.length; i++) {
+              // console.log(beerData.data[i].name);
+              $('<div>')
+                .addClass('result')
+                .html(`<h3>${beerData.data[i].name}</h3>`)
+                .appendTo('#searchResults');
+    }}}
+  )
 };
 
+const addToList = () => {
+  $('')
+}
 
 
 
@@ -61,7 +72,4 @@ $(()=>{
     event.preventDefault();
     $(event.currentTarget).trigger('reset');
   });
-
-
-
 });
