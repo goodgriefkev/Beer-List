@@ -12,10 +12,12 @@ const getBeer = () => {
   const beerData = $.ajax({
     url: queryURL
   }).then((beerData) => {
-    console.log(beerData.data[2]);
-    $('#results').html(`
-      <h3>${beerData.data[2].name}</h3>`)
-
+    console.log(beerData.data);
+    for (let i=0; i<beerData.data.length; i++) {
+      console.log(beerData.data[i].name);
+      $('<div>').html(`
+      <h3>${beerData.data[i].name}</h3>`).appendTo('#searchResults');
+    }
   })
 };
 
