@@ -13,24 +13,26 @@ const getBeer = (userInput) => {
   let queryURL = baseURL + queryType + query + apiKey;
   // console.log(queryURL);
   const beerData = $.ajax({
-    url: queryURL
-  }).then(
-      (beerData) => {
-        console.log(beerData.data);
-          if (beerData.data == undefined) {
+    url: queryURL})
+      .then(
+        (beerData) => {
+        // console.log(beerData.data);
+        if (beerData.data == undefined) {
+          $('<div>')
+            .addClass('result')
+            .html(`<h3>No results found</h3>`)
+            .appendTo('#searchResults');
+        } else {
+          for (let i=0; i<beerData.data.length; i++) {
+            // console.log(beerData.data[i].name);
             $('<div>')
               .addClass('result')
-              .html(`<h3>No results found</h3>`)
+              .html(`<h3>${beerData.data[i].name}</h3>`)
               .appendTo('#searchResults');
-          } else {
-            for (let i=0; i<beerData.data.length; i++) {
-              // console.log(beerData.data[i].name);
-              $('<div>')
-                .addClass('result')
-                .html(`<h3>${beerData.data[i].name}</h3>`)
-                .appendTo('#searchResults');
-    }}}
-  )
+            }
+          }
+          }
+        )
 };
 
 const addToList = () => {
@@ -67,6 +69,7 @@ $(()=>{
   // $btn.on('click', (event) => {
     // console.log('search button clicked');
   $('form').on('submit', (event) => {
+    $('.result').remove();
     // console.log($('#search-box').val());
     getBeer($('#search-box').val());
     event.preventDefault();
