@@ -49,8 +49,10 @@ $(()=>{
 
   const $btn = $('#search-btn');
 
-  $btn.on('click', (event) => {
-    console.log('search button clicked');
+  // $btn.on('click', (event) => {
+    // console.log('search button clicked');
+  $('form').on('submit', (event) => {
+    console.log($('#search-box').val());
     event.preventDefault();
   });
 
