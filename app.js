@@ -1,26 +1,48 @@
 console.log('find some beer');
-
-const baseURL = 'https://sandbox-api.brewerydb.com/v2/';
+// https://cors-anywhere.herokuapp.com/
+const baseURL = 'https://cors-anywhere.herokuapp.com/https://sandbox-api.brewerydb.com/v2/';
 const queryType = 'search?q='
 let query = 'lager';
-const apiKey = '&key=4ece60622e673c96654a9c304ae0b66d';
+const apiKey = '&key=4ece60622e673c96654a9c304ae0b66d&format=json';
 
 let queryURL = baseURL + queryType + query + apiKey;
-console.log(queryURL);
+// console.log(queryURL);
 
+const getBeer = () => {
+  const beerData = $.ajax({
+    url: queryURL
+  }).then((beerData) => {
+    console.log(beerData.data[2]);
+    $('#results').html(`
+      <h3>${beerData.data[2].name}</h3>`)
+
+  })
+};
+
+
+// // // this is trying to use CORS, but it kept throwing same error
 // const getBeer = () => {
 //   const beerData = $.ajax({
-//     url: queryURL
-//   }).then((beerData) => {
-//     console.log(beerData);
-//   }, (error) => {
-//     console.log(error);
+//     type: 'GET',
+//     url: 'https://sandbox-api.brewerydb.com/v2/beers/?key=4ece60622e673c96654a9c304ae0b66d',
+//     contentType: 'text/plain',
+//     xhrFields: {
+//       withCredentials: true
+//     },
+//     headers: {},
+//     success: (beerData) => {
+//       console.log(beerData);
+//     },
+//     error: (error) => {
+//       console.log(error);
+//     }
 //   })
 // };
 
 
+
 $(()=>{
 
-  // getBeer();
+  getBeer();
 
 });
