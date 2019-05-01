@@ -19,7 +19,7 @@ const getBeer = (userInput) => {
     url: queryURL})
       .then(
         (beerData) => {
-        console.log(beerData.data);
+        // console.log(beerData.data);
         if (beerData.data == undefined) {
           $('<div>')
             .addClass('result')
@@ -33,10 +33,12 @@ const getBeer = (userInput) => {
             // console.log(beerData.data[i].ibu);
             // console.log(beerData.data[i].style.description);
             $('<div>')
-              .addClass('result')
-              .html(`<h3>${beerData.data[i].name}</h3>`)
               .appendTo('#searchResults')
-              .append($('<ul>')
+              .addClass('result')
+              .append(`<h3>${beerData.data[i].name}</h3>`)
+              .append(
+
+              $('<ul>')
                 .addClass('details')
                 .append(
                   $('<li>').addClass('.style').html(`${beerData.data[i].style.name}`)
@@ -51,14 +53,11 @@ const getBeer = (userInput) => {
                   $('<li>').addClass('.description').html(`${beerData.data[i].style.description}`)
                 )
               )
-
             }
           }
           }
         )
 };
-
-
 
 
 
@@ -99,14 +98,17 @@ $(()=>{
     $(event.currentTarget).trigger('reset');
   });
 
-  //
-  // $('#searchResults').on('click', (event) => {
-  //   // console.log(event.target);
-  //   // console.log(event.currentTarget);
-  //   $('<div>').addClass('savedResult').append($(event.target).remove()).appendTo('#list');
-  // })
 
-  //manages removing from search results and adding to saved list
+  $('#searchResults').on('click', (event) => {
+    console.log(event.target);
+    console.log(event.currentTarget);
+    // hide/show details
+    $(event.target).find('.details').toggle();
+    //manages removing from search results and adding to saved list
+    // $('<div>').addClass('savedResult').append($(event.target).remove()).appendTo('#list');
+  })
+
+
 
 //close of on ready
 });
