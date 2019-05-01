@@ -19,7 +19,7 @@ const getBeer = (userInput) => {
     url: queryURL})
       .then(
         (beerData) => {
-        // console.log(beerData.data);
+        console.log(beerData.data);
         if (beerData.data == undefined) {
           $('<div>')
             .addClass('result')
@@ -28,10 +28,30 @@ const getBeer = (userInput) => {
         } else {
           for (let i=0; i<beerData.data.length; i++) {
             // console.log(beerData.data[i].name);
+            // console.log(beerData.data[i].style.name);
+            // console.log(beerData.data[i].abv);
+            // console.log(beerData.data[i].ibu);
+            // console.log(beerData.data[i].style.description);
             $('<div>')
               .addClass('result')
               .html(`<h3>${beerData.data[i].name}</h3>`)
-              .appendTo('#searchResults');
+              .appendTo('#searchResults')
+              .append($('<ul>')
+                .addClass('details')
+                .append(
+                  $('<li>').addClass('.style').html(`${beerData.data[i].style.name}`)
+                )
+                .append(
+                  $('<li>').addClass('.abv').html(`${beerData.data[i].abv}`)
+                )
+                .append(
+                  $('<li>').addClass('.ibu').html(`${beerData.data[i].ibu}`)
+                )
+                .append(
+                  $('<li>').addClass('.description').html(`${beerData.data[i].style.description}`)
+                )
+              )
+
             }
           }
           }
@@ -70,6 +90,7 @@ $(()=>{
     // $btn.on('click', (event) => {
     // console.log('search button clicked');
 
+  //manages the search box, getting results and displaying them
   $('form').on('submit', (event) => {
     $('.result').remove();
     // console.log($('#search-box').val());
@@ -78,11 +99,14 @@ $(()=>{
     $(event.currentTarget).trigger('reset');
   });
 
-  $('#searchResults').on('click', (event) => {
-    console.log(event.target);
-    console.log(event.currentTarget);
-    $('<div>').addClass('savedResult').append($(event.target).remove()).appendTo('#list');
-  })
+  //
+  // $('#searchResults').on('click', (event) => {
+  //   // console.log(event.target);
+  //   // console.log(event.currentTarget);
+  //   $('<div>').addClass('savedResult').append($(event.target).remove()).appendTo('#list');
+  // })
+
+  //manages removing from search results and adding to saved list
 
 //close of on ready
 });
