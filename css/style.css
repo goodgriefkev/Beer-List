@@ -1,29 +1,36 @@
 html {
-  height: 100%;
+
 }
 
 body {
-  height: 100%;
-  overflow: hidden;
-  margin: 0;
-  display: flex;
   box-sizing: border-box;
 }
 
-#main {
-  flex-basis: 100%;
-}
-
-.column {
-  height: 100%;
+#container {
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
-  overflow-y: auto;
+  height: 100%;
+  width: 100%;
+}
+
+#main {
+  /* background-color: green; */
+  text-align: center;
+}
+
+#columns {
+ display: flex;
+ height: 100%;
 }
 
 #searchResults {
-  flex-shrink: 0;
+  /* background-color: blue; */
+  flex: 3;
+}
+
+#list {
+  /* background-color: red; */
+  flex: 2;
 }
 
 
