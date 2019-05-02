@@ -35,7 +35,7 @@ const getBeer = (userInput) => {
             // console.log(beerData.data[i].style.description);
             $('<div>')
               .appendTo('#searchResults')
-              .attr('id', 'draggable')
+              // .attr('id', 'draggable')
               .addClass('result')
               .append(`<h3>${beerData.data[i].name}</h3>`)
               .append(
@@ -83,7 +83,7 @@ const getBeer = (userInput) => {
 
 
 
-
+  // $( "#draggable" ).draggable();
 
   const $btn = $('#search-btn');
     // $btn.on('click', (event) => {
@@ -98,11 +98,8 @@ const getBeer = (userInput) => {
     $(event.currentTarget).trigger('reset');
   });
 
-
   //  // manages removing from search results and adding to saved list
-    $('#searchResults').on('click', (event) => {
-
-
+  $('#searchResults').on('click', (event) => {
     $('<div>').addClass('savedResult').append($(event.target).remove()).appendTo('#list');
   })
 
