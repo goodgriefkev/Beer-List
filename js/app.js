@@ -23,12 +23,12 @@ const getBeer = (userInput) => {
         // console.log(beerData.data);
         if (beerData.data == undefined) {
           $('<div>')
-            .addClass('result')
-            .html(`<h3>No results found</h3>`)
+            .addClass('returnMessage')
+            .html(`<h2>No results found for: "${query}"</h2>`)
             .appendTo('#searchResults');
         } else {
           $('<div>')
-            .addClass('result')
+            .addClass('returnMessage')
             .html(`<h2>Search results for: "${query}"</h2>`)
             .appendTo('#searchResults')
           for (let i=0; i<beerData.data.length; i++) {
@@ -104,14 +104,11 @@ const getBeer = (userInput) => {
 
   //  // manages removing from search results and adding to saved list
   $('#searchResults').on('click', '.result', (event) => {
-    console.log('clicked');
-    console.log(event.target);
-    console.log(event.currentTarget);
-    $(event.currentTarget).remove().appendTo('#list');
-    // $('<div>')
-    //   .addClass('savedResult')
-    //   .append($(event.target)
-    //   .remove()).appendTo('#list');
+    // console.log('clicked');
+    // console.log(event.target);
+    // console.log(event.currentTarget);
+    // $(event.currentTarget).remove().appendTo('#list');
+    $(event.currentTarget).toggle();
   });
 
 //close of on ready
