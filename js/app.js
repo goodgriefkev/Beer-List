@@ -27,6 +27,10 @@ const getBeer = (userInput) => {
             .html(`<h3>No results found</h3>`)
             .appendTo('#searchResults');
         } else {
+          $('<div>')
+            .addClass('result')
+            .html(`<h2>Search results for: "${query}"</h2>`)
+            .appendTo('#searchResults')
           for (let i=0; i<beerData.data.length; i++) {
             // console.log(beerData.data[i].name);
             // console.log(beerData.data[i].style.name);
