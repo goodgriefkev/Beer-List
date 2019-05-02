@@ -107,8 +107,7 @@ const getBeer = (userInput) => {
     // console.log('clicked');
     // console.log(event.target);
     // console.log(event.currentTarget);
-    // $(event.currentTarget).remove().appendTo('#list');
-    $(event.currentTarget).toggle();
+    $(event.currentTarget).remove().appendTo('#list');
   });
 
 //close of on ready
