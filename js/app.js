@@ -1,6 +1,7 @@
 console.log('find some beer');
 
-
+//open of on ready
+$(()=>{
 
 // https://cors-anywhere.herokuapp.com/
 const baseURL = 'https://cors-anywhere.herokuapp.com/https://sandbox-api.brewerydb.com/v2/';
@@ -34,24 +35,24 @@ const getBeer = (userInput) => {
             // console.log(beerData.data[i].style.description);
             $('<div>')
               .appendTo('#searchResults')
+              .attr('id', 'draggable')
               .addClass('result')
               .append(`<h3>${beerData.data[i].name}</h3>`)
               .append(
-
-              $('<ul>')
-                .addClass('details')
-                .append(
-                  $('<li>').addClass('.style').html(`${beerData.data[i].style.name}`)
-                )
-                .append(
-                  $('<li>').addClass('.abv').html(`${beerData.data[i].abv}`)
-                )
-                .append(
-                  $('<li>').addClass('.ibu').html(`${beerData.data[i].ibu}`)
-                )
-                .append(
-                  $('<li>').addClass('.description').html(`${beerData.data[i].style.description}`)
-                )
+                $('<ul>')
+                  .addClass('details')
+                  .append(
+                    $('<li>').addClass('.style').html(`${beerData.data[i].style.name}`)
+                  )
+                  .append(
+                    $('<li>').addClass('.abv').html(`${beerData.data[i].abv}`)
+                  )
+                  .append(
+                    $('<li>').addClass('.ibu').html(`${beerData.data[i].ibu}`)
+                  )
+                  .append(
+                    $('<li>').addClass('.description').html(`${beerData.data[i].style.description}`)
+                  )
               )
             }
           }
@@ -82,8 +83,7 @@ const getBeer = (userInput) => {
 
 
 
-//open of on ready
-$(()=>{
+
 
   const $btn = $('#search-btn');
     // $btn.on('click', (event) => {
@@ -99,16 +99,12 @@ $(()=>{
   });
 
 
-  $('#searchResults').on('click', (event) => {
-    console.log(event.target);
-    console.log(event.currentTarget);
-    // hide/show details
-    $(event.target).find('.details').toggle();
-    //manages removing from search results and adding to saved list
-    // $('<div>').addClass('savedResult').append($(event.target).remove()).appendTo('#list');
+  //  // manages removing from search results and adding to saved list
+    $('#searchResults').on('click', (event) => {
+
+
+    $('<div>').addClass('savedResult').append($(event.target).remove()).appendTo('#list');
   })
-
-
 
 //close of on ready
 });
