@@ -51,23 +51,28 @@ const getBeer = (userInput) => {
               .appendTo('#searchResults')
               .addClass('result')
               .addClass('searched')
-              .append(`<h3>${beerData.data[i].name}</h3>`)
+              .append(`<h3 id=beerName>${beerData.data[i].name}</h3>`)
               .append(
-                $('<ul>')
-                  .addClass('details')
+                $('<div>')
+                  .attr('id', 'detailsContainer')
                   .append(
-                    $('<li>').addClass('.style').html(`${beerData.data[i].style.name}`)
+                    $('<ul>')
+                      .addClass('details')
+                      .append(
+                        $('<li>').addClass('.style').html(`${beerData.data[i].style.name}`)
+                      )
+                      .append(
+                        $('<li>').addClass('.abv').html(`${beerData.data[i].abv}`)
+                      )
+                      .append(
+                        $('<li>').addClass('.ibu').html(`${beerData.data[i].ibu}`)
+                      )
+                      .append(
+                        $('<li>').addClass('.description').html(`${beerData.data[i].style.description}`)
+                      )
                   )
-                  .append(
-                    $('<li>').addClass('.abv').html(`${beerData.data[i].abv}`)
-                  )
-                  .append(
-                    $('<li>').addClass('.ibu').html(`${beerData.data[i].ibu}`)
-                  )
-                  .append(
-                    $('<li>').addClass('.description').html(`${beerData.data[i].style.description}`)
-                  )
-              )
+                )
+
             }
           }
           }
@@ -113,6 +118,7 @@ const getBeer = (userInput) => {
   });
 
   //code block to make user list accept draggable elements
+  //keep hitting walls. does this need to be added to getBeer() ?
   $('#list').droppable({
     accept: '.searched',
     drop: (event, ui) => {
@@ -129,9 +135,11 @@ const getBeer = (userInput) => {
   });
 
   //code block to show/hide beer details and delete/archive options
-  // $('').click(toggleDetails() {
-  //
-  // })
+  $('#beerName').on('click', '.result', (event) => {
+    console.log(event.target);
+    $(event.target).toggle();
+    event.stopPropagation();
+  });
 
   // //code block to show/hide user list
   // $('#list').click(hideList(){
