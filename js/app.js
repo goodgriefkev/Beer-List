@@ -38,8 +38,8 @@ const getBeer = (userInput) => {
             // console.log(beerData.data[i].ibu);
             // console.log(beerData.data[i].style.description);
             $('<div>')
+              .draggable()
               .appendTo('#searchResults')
-              // .attr('id', 'draggable')
               .addClass('result')
               .append(`<h3>${beerData.data[i].name}</h3>`)
               .append(
@@ -87,7 +87,9 @@ const getBeer = (userInput) => {
 
 
 
-  // $( "#draggable" ).draggable();
+  $('#draggable').draggable({
+    containment: '#columns'
+  });
 
   const $btn = $('#search-btn');
     // $btn.on('click', (event) => {
@@ -102,13 +104,19 @@ const getBeer = (userInput) => {
     $(event.currentTarget).trigger('reset');
   });
 
-  //  // manages removing from search results and adding to saved list
-  $('#searchResults').on('click', '.result', (event) => {
-    // console.log('clicked');
-    // console.log(event.target);
-    // console.log(event.currentTarget);
-    $(event.currentTarget).remove().appendTo('#list');
-  });
+  // //  // manages removing from search results and adding to saved list
+  // $('#searchResults').on('click', '.result', (event) => {
+  //   // console.log('clicked');
+  //   // console.log(event.target);
+  //   // console.log(event.currentTarget);
+  //   $(event.currentTarget).detach().appendTo('#list');
+  // });
+
+  // // adds draggable functionality to search results after their creation
+  // $('#searchResults').on('click', '.result', (event) => {
+  //   $(event.currentTarget).attr('id', 'draggable');
+  //   $('#draggable').draggable({containment: '#columns'});
+  // })
 
 //close of on ready
 });
