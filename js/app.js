@@ -50,6 +50,7 @@ const getBeer = (userInput) => {
               .attr('id', 'draggable')
               .appendTo('#searchResults')
               .addClass('result')
+              .addClass('searched')
               .append(`<h3>${beerData.data[i].name}</h3>`)
               .append(
                 $('<ul>')
@@ -101,7 +102,7 @@ const getBeer = (userInput) => {
     // $btn.on('click', (event) => {
     // console.log('search button clicked');
 
-  //function to query API and display results
+  //code block to query API and display results
   $('form').on('submit', (event) => {
     $('.result').remove();
     $('.returnMessage').remove();
@@ -111,28 +112,26 @@ const getBeer = (userInput) => {
     $(event.currentTarget).trigger('reset');
   });
 
-  // //  // manages removing from search results and adding to user list
-  // $('#searchResults').on('click', '.result', (event) => {
-  //   // console.log('clicked');
-  //   // console.log(event.target);
-  //   // console.log(event.currentTarget);
-  //   $(event.currentTarget).detach().appendTo('#list');
-  // });
-
+  //code block to make user list accept draggable elements
   $('#list').droppable({
-    accept: '.result',
+    accept: '.searched',
     drop: (event, ui) => {
       // alert('dropped');
       // console.log(event.target);
       // console.log(event.target.children);
       let droppedResult = $(ui.draggable)
         .clone()
-        .removeClass('result')
+        .removeClass('searched')
         .addClass('saved');
       $(event.target).append(droppedResult);
       // console.log(event.target.children);
     }
   });
+
+  //code block to show/hide beer details and delete/archive options
+  // $('').click(toggleDetails() {
+  //
+  // })
 
   // //code block to show/hide user list
   // $('#list').click(hideList(){
