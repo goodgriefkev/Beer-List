@@ -98,6 +98,7 @@ const getBeer = (userInput) => {
   //manages the search box, getting results and displaying them
   $('form').on('submit', (event) => {
     $('.result').remove();
+    $('.returnMessage').remove();
     // console.log($('#search-box').val());
     getBeer($('#search-box').val());
     event.preventDefault();
