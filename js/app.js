@@ -142,6 +142,7 @@ const getBeer = (userInput) => {
   //code block to make items added to user list sortable
   $('#list').sortable({
     axis: 'y',
+    items: '> div'
   })
 
 //close of on ready
