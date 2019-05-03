@@ -45,6 +45,13 @@ body {
   overflow-y: auto; */
 }
 
+.results {
+
+}
+
+h3 {
+  /* width: 0; */
+}
 
 .details {
   display: none;
@@ -53,6 +60,6 @@ body {
 #draggable {
   /* width: 150px;
   height: 150px;  */
-  padding: 0.5em;
-  background-color: green;
+  /* padding: 0.5em; */
+  /* background-color: green; */
 }

@@ -38,7 +38,16 @@ const getBeer = (userInput) => {
             // console.log(beerData.data[i].ibu);
             // console.log(beerData.data[i].style.description);
             $('<div>')
-              .draggable()
+              .draggable({
+                cursor: 'move',
+                // snap: true,
+                // snapMode: 'inner',
+                // snapTolerance: '30',
+                helper: 'clone',
+                containment: '#columns',
+                handle: 'h3'
+              })
+              .attr('id', 'draggable')
               .appendTo('#searchResults')
               .addClass('result')
               .append(`<h3>${beerData.data[i].name}</h3>`)
@@ -87,15 +96,12 @@ const getBeer = (userInput) => {
 
 
 
-  $('#draggable').draggable({
-    containment: '#columns'
-  });
 
   const $btn = $('#search-btn');
     // $btn.on('click', (event) => {
     // console.log('search button clicked');
 
-  //manages the search box, getting results and displaying them
+  //function to query API and display results
   $('form').on('submit', (event) => {
     $('.result').remove();
     $('.returnMessage').remove();
@@ -113,11 +119,14 @@ const getBeer = (userInput) => {
   //   $(event.currentTarget).detach().appendTo('#list');
   // });
 
-  // // adds draggable functionality to search results after their creation
-  // $('#searchResults').on('click', '.result', (event) => {
-  //   $(event.currentTarget).attr('id', 'draggable');
-  //   $('#draggable').draggable({containment: '#columns'});
-  // })
+$('#list').droppable({
+  accept: '.result',
+  drop: (event, ui) => {
+    // alert('dropped');
+    let droppedResult = $(ui.draggable).clone();
+    $(event.target).append(droppedResult);
+  }
+});
 
 //close of on ready
 });
