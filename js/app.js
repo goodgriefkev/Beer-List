@@ -111,7 +111,7 @@ const getBeer = (userInput) => {
     $(event.currentTarget).trigger('reset');
   });
 
-  // //  // manages removing from search results and adding to saved list
+  // //  // manages removing from search results and adding to user list
   // $('#searchResults').on('click', '.result', (event) => {
   //   // console.log('clicked');
   //   // console.log(event.target);
@@ -119,14 +119,30 @@ const getBeer = (userInput) => {
   //   $(event.currentTarget).detach().appendTo('#list');
   // });
 
-$('#list').droppable({
-  accept: '.result',
-  drop: (event, ui) => {
-    // alert('dropped');
-    let droppedResult = $(ui.draggable).clone();
-    $(event.target).append(droppedResult);
-  }
-});
+  $('#list').droppable({
+    accept: '.result',
+    drop: (event, ui) => {
+      // alert('dropped');
+      // console.log(event.target);
+      // console.log(event.target.children);
+      let droppedResult = $(ui.draggable)
+        .clone()
+        .removeClass('result')
+        .addClass('saved');
+      $(event.target).append(droppedResult);
+      // console.log(event.target.children);
+    }
+  });
+
+  // //code block to show/hide user list
+  // $('#list').click(hideList(){
+  //   $('#list').toggle('blind', 250);
+  // });
+
+  //code block to make items added to user list sortable
+  $('#list').sortable({
+    axis: 'y',
+  })
 
 //close of on ready
 });
