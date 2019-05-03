@@ -118,7 +118,6 @@ const getBeer = (userInput) => {
   });
 
   //code block to make user list accept draggable elements
-  //keep hitting walls. does this need to be added to getBeer() ?
   $('#list').droppable({
     accept: '.searched',
     drop: (event, ui) => {
@@ -135,6 +134,7 @@ const getBeer = (userInput) => {
   });
 
   //code block to show/hide beer details and delete/archive options
+  //keep hitting walls. does this need to be added to getBeer() ?
   $('#beerName').on('click', '.result', (event) => {
     console.log(event.target);
     $(event.target).toggle();
