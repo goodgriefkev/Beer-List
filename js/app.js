@@ -30,6 +30,7 @@ const getBeer = (userInput) => {
           $('<div>')
             .addClass('returnMessage')
             .html(`<h2>Search results for: "${query}"</h2>`)
+            .append('<p>', "Click and drag beers to the Hunting List")
             .appendTo('#searchResults')
           for (let i=0; i<beerData.data.length; i++) {
             // console.log(beerData.data[i].name);
@@ -39,7 +40,7 @@ const getBeer = (userInput) => {
             // console.log(beerData.data[i].style.description);
             $('<div>')
               .draggable({
-                cursor: 'move',
+                cursor: 'pointer',
                 helper: 'clone',
                 containment: '#columns',
                 handle: 'h3'
@@ -96,9 +97,12 @@ const getBeer = (userInput) => {
   });
 
   //allows user list to accept draggable elements
-  //adds delete button to
+  //adds delete button to user list items
   $('#list').droppable({
     accept: '.result',
+    // over: (event, ui) => {
+    //
+    // },
     drop: (event, ui) => {
       // alert('dropped');
       // console.log(event.target);
@@ -114,7 +118,8 @@ const getBeer = (userInput) => {
   //makes items added to user list sortable
   $('#list').sortable({
     axis: 'y',
-    items: '> div'
+    items: '> div',
+    cursor: 'pointer'
   })
 
   //deletes a beer from user list - currently broken
