@@ -1,6 +1,11 @@
 # Beer-List
 SEIR Project One
+One page web app that allows user to search the BreweryDB API for beers, view details of those beers, and add selections to a favorites list.
+
+# Initial Wireframe
 ![Beer List Wireframe](/images/IMG_9015.jpg)
+
+# Technologies Employed
 
 
 
