@@ -92,7 +92,7 @@ const getBeer = (userInput) => {
 
   //toggles details on/off
   $('#detailsButton').on('click', function() {
-    $('.details').toggle('blind', 1000);
+    $('.details').toggle('size', 1000);
   });
 
   //allows user list to accept draggable elements
