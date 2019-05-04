@@ -26,7 +26,7 @@ const getBeer = (userInput) => {
             .html(`<h2>No results found for: "${query}"</h2>`)
             .appendTo('#searchResults');
         } else {
-          $('#list').removeClass('hidden');
+          $('#list').toggleClass('hidden');
           $('<div>')
             .addClass('returnMessage')
             .html(`<h2>Search results for: "${query}"</h2>`)

@@ -6,8 +6,6 @@ SEIR Project One
 
 Features to add or tweak:
 
-make user list hidden on page load, and show on return of search results.
-
 expand search options to breweries and styles
 
 hide undefined results in details view
