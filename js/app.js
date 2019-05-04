@@ -55,16 +55,16 @@ const getBeer = (userInput) => {
                     $('<ul>')
                       .addClass('details')
                       .append(
-                        $('<li>').addClass('.style').html(`${beerData.data[i].style.name}`)
+                        $('<li>').addClass('.style').html(`style: ${beerData.data[i].style.name}`)
                       )
                       .append(
-                        $('<li>').addClass('.abv').html(`${beerData.data[i].abv}`)
+                        $('<li>').addClass('.abv').html(`abv: ${beerData.data[i].abv}`)
                       )
                       .append(
-                        $('<li>').addClass('.ibu').html(`${beerData.data[i].ibu}`)
+                        $('<li>').addClass('.ibu').html(`ibu: ${beerData.data[i].ibu}`)
                       )
                       .append(
-                        $('<li>').addClass('.description').html(`${beerData.data[i].style.description}`)
+                        $('<li>').addClass('.description').html(`description: ${beerData.data[i].style.description}`)
                       )
                   )
                 )
