@@ -79,7 +79,7 @@ const getBeer = (userInput) => {
     // $btn.on('click', (event) => {
     // console.log('search button clicked');
 
-  //code block to query API and display results
+  //queries API and displays results on page
   $('form').on('submit', (event) => {
     $('.result').remove();
     $('.returnMessage').remove();
@@ -89,7 +89,13 @@ const getBeer = (userInput) => {
     $(event.currentTarget).trigger('reset');
   });
 
-  //code block to make user list accept draggable elements
+  //toggles details on/off
+  $('#detailsButton').on('click', function() {
+    $('.details').toggle();
+  });
+
+  //allows user list to accept draggable elements
+  //adds delete button to
   $('#list').droppable({
     accept: '.result',
     drop: (event, ui) => {
@@ -104,19 +110,14 @@ const getBeer = (userInput) => {
     }
   });
 
-
-  //toggles details on/off
-  $('#detailsButton').on('click', function() {
-    $('.details').toggle();
-  });
-
-  //shows/hides user list - currently broken
-  // $('#list').click(function(){
-  //   $('#list').toggle('blind', 250);
-  // });
+  //makes items added to user list sortable
+  $('#list').sortable({
+    axis: 'y',
+    items: '> div'
+  })
 
   //deletes a beer from user list - currently broken
-  //console logs seem to show the right thing, but nothing is removed from page or dom 
+  //console logs seem to show the right thing, but nothing is removed from page or dom
   const $parent = $(event.target).parent()
   $('#columns').on('click', '.deleteButton', function() {
     console.log(event.target);
@@ -124,18 +125,10 @@ const getBeer = (userInput) => {
     $parent.remove();
   });
 
-  // $('#sortable .deleteButton').click(function() {
-  //   console.log($(this));
-  //   $(this).parent().remove();
+  //shows/hides user list - currently broken
+  // $('#list').click(function(){
+  //   $('#list').toggle('blind', 250);
   // });
-
-  //makes items added to user list sortable
-  $('#list').sortable({
-    axis: 'y',
-    items: '> div'
-  })
-
-
 
 //close of on ready function
 });
