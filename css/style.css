@@ -41,7 +41,7 @@ body {
   width: auto;
 }
 
-#detailsButton {
+#detailsButtonContainer {
   margin-top: -15px;
   margin-bottom: 35px;
 }
@@ -55,7 +55,7 @@ a {
 #columns {
  display: flex;
  height: 100%;
-
+ margin-bottom: 50px;
 }
 
 #searchResults {
