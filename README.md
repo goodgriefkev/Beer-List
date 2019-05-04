@@ -8,6 +8,7 @@ One page web app that allows user to search the BreweryDB API for beers, view de
 # Technologies Employed
 ## made with HTML, CSS, JavaScript, jQuery, and jQuery UI
 Search results dynamically displayed on page with jQuery. Results Drag-and-Drop, list sorting, and animation with jQuery UI.
+Mobile Drag-and-Drop functionality with [jQuery UI Touch Punch](http://touchpunch.furf.com/)
 
 # Required software
 tested on Chrome 73
@@ -16,11 +17,8 @@ tested on Chrome 73
 [Beer Hunter](https://goodgriefkev.github.io/Beer-List/#)
 
 # Known bugs/incomplete functionality:
-* 'delete' button is not removing items from user list
 * in details view if no data is available for a category then 'undefined' is displayed
-* adding to user list not functional on mobile platforms
 * details toggle animation is wonky, especially on show
-
 
 # Features to add or tweak:
 * expand search options to breweries and styles
