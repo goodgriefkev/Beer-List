@@ -79,6 +79,10 @@ h3 {
   display: none;
 }
 
+.hidden {
+  display: none;
+}
+
 #draggable {
   /* width: 150px;
   height: 150px;  */
