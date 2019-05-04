@@ -1,4 +1,4 @@
-# Beer-List
+# Beer Hunter
 SEIR Project One
 One page web app that allows user to search the BreweryDB API for beers, view details of those beers, and add selections to a favorites list.
 
