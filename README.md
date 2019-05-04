@@ -28,5 +28,5 @@ tested on Chrome 73
 * toggle beer details on/off for individual beers in both results and user list
 * if a beer is added to user list, it will be removed from displayed search results
 
-#Author
+# Author
 Kevin Honnoll for General Assembly SEIR-flex class
