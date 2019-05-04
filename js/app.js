@@ -131,6 +131,10 @@ const getBeer = (userInput) => {
   //   $('#list').toggle('blind', 250);
   // });
 
+  $(function() {
+    $(document).tooltip();
+  });
+
 //close of on ready function
 });
 
