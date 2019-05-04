@@ -132,7 +132,8 @@ const getBeer = (userInput) => {
       // console.log(event.target.children);
       let droppedResult = $(ui.draggable)
         .clone()
-        .removeClass('result');
+        .removeClass('result')
+        .append(`<button id=deleteButton>Delete</button>`)
       $(event.target).append(droppedResult);
       // console.log(event.target.children);
     }
@@ -140,6 +141,11 @@ const getBeer = (userInput) => {
 
   // //code block to show/hide beer details and delete/archive options
   // //keep hitting walls//
+
+  $('#detailsButton').on('click', function() {
+    $('.details').toggle();
+  });
+
   //attempt one
   // function hideShowDetails(event) {
   //   const target = $(event.target);
@@ -150,6 +156,17 @@ const getBeer = (userInput) => {
   // $('#columns').on('click', function() {
   //   hideShowDetails();
   // });
+
+  //attempt 1.5 throws error
+  // function hideShowDetails(event) {
+  //   const target = $(event.target);
+  //   if(target.is('#detailsButton')){
+  //     target.children().toggle();
+  //   }
+  // }
+  // $('#columns').on('click', function() {
+  //   hideShowDetails();
+  // })
 
   // //attempt two
   // $('#columns').on('click', () {
@@ -168,9 +185,17 @@ const getBeer = (userInput) => {
   //
   // $('#columns').on('click', '.details', showHideDetails)
 
-  //code block to show/hide user list
-  $('#list').click(function(){
-    $('#list').toggle('blind', 250);
+  //code block to show/hide user list - currently broken
+  // $('#list').click(function(){
+  //   $('#list').toggle('blind', 250);
+  // });
+
+  //code to delete a beer from user list
+  const $parent = $(event.target).parent()
+  $('#columns').on('click', '#deleteButton', function() {
+    console.log(event.target);
+    console.log($(event.target).parent());
+    $parent.remove();
   });
 
   //code block to make items added to user list sortable
