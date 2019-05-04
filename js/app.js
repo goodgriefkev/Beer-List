@@ -1,6 +1,6 @@
-console.log('find some beer');
+// console.log('find some beer');
 
-//open of on ready
+//open of on ready function
 $(()=>{
 
 // https://cors-anywhere.herokuapp.com/
@@ -8,8 +8,6 @@ const baseURL = 'https://cors-anywhere.herokuapp.com/https://sandbox-api.brewery
 const queryType = 'search?q='
 let query = 'lager';
 const apiKey = '&key=4ece60622e673c96654a9c304ae0b66d&format=json';
-
-
 
 const getBeer = (userInput) => {
   let query = userInput
@@ -41,9 +39,6 @@ const getBeer = (userInput) => {
             $('<div>')
               .draggable({
                 cursor: 'move',
-                // snap: true,
-                // snapMode: 'inner',
-                // snapTolerance: '30',
                 helper: 'clone',
                 containment: '#columns',
                 handle: 'h3'
@@ -76,38 +71,9 @@ const getBeer = (userInput) => {
             }
 
           }
-          //this shows/hides beer details
-          // $('#detailsContainer')
-          // .click(function() {
-          //   $('.details').toggle("fold", 500);
-          // });
           }
         )
 };
-
-
-
-// // // this is trying to use CORS, but it kept throwing same error
-// const getBeer = () => {
-//   const beerData = $.ajax({
-//     type: 'GET',
-//     url: 'https://sandbox-api.brewerydb.com/v2/beers/?key=4ece60622e673c96654a9c304ae0b66d',
-//     contentType: 'text/plain',
-//     xhrFields: {
-//       withCredentials: true
-//     },
-//     headers: {},
-//     success: (beerData) => {
-//       console.log(beerData);
-//     },
-//     error: (error) => {
-//       console.log(error);
-//     }
-//   })
-// };
-
-
-
 
   const $btn = $('#search-btn');
     // $btn.on('click', (event) => {
@@ -133,76 +99,89 @@ const getBeer = (userInput) => {
       let droppedResult = $(ui.draggable)
         .clone()
         .removeClass('result')
-        .append(`<button id=deleteButton>Delete</button>`)
+        .append(`<button class=deleteButton>Delete</button>`)
       $(event.target).append(droppedResult);
-      // console.log(event.target.children);
     }
   });
 
-  // //code block to show/hide beer details and delete/archive options
-  // //keep hitting walls//
 
+  //toggles details on/off
   $('#detailsButton').on('click', function() {
     $('.details').toggle();
   });
 
-  //attempt one
-  // function hideShowDetails(event) {
-  //   const target = $(event.target);
-  //   if(target.is('h3')){
-  //     target.children().toggle();
-  //   }
-  // }
-  // $('#columns').on('click', function() {
-  //   hideShowDetails();
-  // });
-
-  //attempt 1.5 throws error
-  // function hideShowDetails(event) {
-  //   const target = $(event.target);
-  //   if(target.is('#detailsButton')){
-  //     target.children().toggle();
-  //   }
-  // }
-  // $('#columns').on('click', function() {
-  //   hideShowDetails();
-  // })
-
-  // //attempt two
-  // $('#columns').on('click', () {
-  //   console.log($(this).children());
-  //   console.log(event.target);
-  //   console.log(event.currentTarget);
-  //   $(this).find('ul').toggle();
-  //
-  // });
-
-  // //attempt three
-  // const showHideDetails = () => {
-  //   console.log(event.target);
-  //   $(event.target).toggle();
-  // };
-  //
-  // $('#columns').on('click', '.details', showHideDetails)
-
-  //code block to show/hide user list - currently broken
+  //shows/hides user list - currently broken
   // $('#list').click(function(){
   //   $('#list').toggle('blind', 250);
   // });
 
-  //code to delete a beer from user list
+  //deletes a beer from user list - currently broken
+  //console logs seem to show the right thing, but nothing is removed from page or dom 
   const $parent = $(event.target).parent()
-  $('#columns').on('click', '#deleteButton', function() {
+  $('#columns').on('click', '.deleteButton', function() {
     console.log(event.target);
     console.log($(event.target).parent());
     $parent.remove();
   });
 
-  //code block to make items added to user list sortable
+  // $('#sortable .deleteButton').click(function() {
+  //   console.log($(this));
+  //   $(this).parent().remove();
+  // });
+
+  //makes items added to user list sortable
   $('#list').sortable({
     axis: 'y',
     items: '> div'
   })
 
-//close of on ready
+
+
+//close of on ready function
 });
+
+
+
+
+
+
+// //attempts at code to show/hide beer details and delete/archive options
+// //keep hitting walls//
+//attempt one
+// function hideShowDetails(event) {
+//   const target = $(event.target);
+//   if(target.is('h3')){
+//     target.children().toggle();
+//   }
+// }
+// $('#columns').on('click', function() {
+//   hideShowDetails();
+// });
+
+//attempt 1.5 throws error
+// function hideShowDetails(event) {
+//   const target = $(event.target);
+//   if(target.is('#detailsButton')){
+//     target.children().toggle();
+//   }
+// }
+// $('#columns').on('click', function() {
+//   hideShowDetails();
+// })
+
+// //attempt two
+// $('#columns').on('click', () {
+//   console.log($(this).children());
+//   console.log(event.target);
+//   console.log(event.currentTarget);
+//   $(this).find('ul').toggle();
+//
+// });
+
+// //attempt three
+// const showHideDetails = () => {
+//   console.log(event.target);
+//   $(event.target).toggle();
+// };
+//
+// $('#columns').on('click', '.details', showHideDetails)
