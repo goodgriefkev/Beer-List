@@ -16,6 +16,7 @@ const getBeer = (userInput) => {
   // console.log(query);
   let queryURL = baseURL + queryType + query + apiKey;
   // console.log(queryURL);
+
   const beerData = $.ajax({
     url: queryURL})
       .then(
@@ -50,7 +51,6 @@ const getBeer = (userInput) => {
               .attr('id', 'draggable')
               .appendTo('#searchResults')
               .addClass('result')
-              .addClass('searched')
               .append(`<h3 id=beerName>${beerData.data[i].name}</h3>`)
               .append(
                 $('<div>')
@@ -74,7 +74,13 @@ const getBeer = (userInput) => {
                 )
 
             }
+
           }
+          //this shows/hides beer details
+          // $('#detailsContainer')
+          // .click(function() {
+          //   $('.details').toggle("fold", 500);
+          // });
           }
         )
 };
@@ -119,32 +125,53 @@ const getBeer = (userInput) => {
 
   //code block to make user list accept draggable elements
   $('#list').droppable({
-    accept: '.searched',
+    accept: '.result',
     drop: (event, ui) => {
       // alert('dropped');
       // console.log(event.target);
       // console.log(event.target.children);
       let droppedResult = $(ui.draggable)
         .clone()
-        .removeClass('searched')
-        .addClass('saved');
+        .removeClass('result');
       $(event.target).append(droppedResult);
       // console.log(event.target.children);
     }
   });
 
-  //code block to show/hide beer details and delete/archive options
-  //keep hitting walls. does this need to be added to getBeer() ?
-  $('#beerName').on('click', '.result', (event) => {
-    console.log(event.target);
-    $(event.target).toggle();
-    event.stopPropagation();
-  });
-
-  // //code block to show/hide user list
-  // $('#list').click(hideList(){
-  //   $('#list').toggle('blind', 250);
+  // //code block to show/hide beer details and delete/archive options
+  // //keep hitting walls//
+  //attempt one
+  // function hideShowDetails(event) {
+  //   const target = $(event.target);
+  //   if(target.is('h3')){
+  //     target.children().toggle();
+  //   }
+  // }
+  // $('#columns').on('click', function() {
+  //   hideShowDetails();
   // });
+
+  // //attempt two
+  // $('#columns').on('click', () {
+  //   console.log($(this).children());
+  //   console.log(event.target);
+  //   console.log(event.currentTarget);
+  //   $(this).find('ul').toggle();
+  //
+  // });
+
+  // //attempt three
+  // const showHideDetails = () => {
+  //   console.log(event.target);
+  //   $(event.target).toggle();
+  // };
+  //
+  // $('#columns').on('click', '.details', showHideDetails)
+
+  //code block to show/hide user list
+  $('#list').click(function(){
+    $('#list').toggle('blind', 250);
+  });
 
   //code block to make items added to user list sortable
   $('#list').sortable({
