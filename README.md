@@ -30,3 +30,6 @@ tested on Chrome 73
 
 # Author
 Kevin Honnoll for General Assembly SEIR-flex class
+
+# Inspiration
+![Gimli](/images/gimlibeer.jpg)
