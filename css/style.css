@@ -18,9 +18,31 @@ body {
 }
 
 #main {
-  /* background-color: green; */
+  background-color: burlywood;
   text-align: center;
-  font-size: 36px;
+  font-size: 48px;
+  color: white;
+}
+
+.header-image {
+  background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),url('../images/taps.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.form {
+  margin-top: -70px;
+}
+
+#search-box {
+  width: auto;
+}
+
+#detailsButton {
+  margin-top: -15px;
+  margin-bottom: 35px;
 }
 
 #columns {
