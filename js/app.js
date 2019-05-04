@@ -119,10 +119,11 @@ const getBeer = (userInput) => {
 
   //deletes a beer from user list - currently broken
   //console logs seem to show the right thing, but nothing is removed from page or dom
-  const $parent = $(event.target).parent()
-  $('#columns').on('click', '.deleteButton', function() {
-    console.log(event.target);
-    console.log($(event.target).parent());
+
+  $('#columns').on('click', '.deleteButton', function(event) {
+    const $parent = $(event.target).parent()
+    // console.log(event.target);
+    // console.log($(event.target).parent());
     $parent.remove();
   });
 
